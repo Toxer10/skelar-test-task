@@ -116,13 +116,6 @@ export default function QuizQuestion({
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="reaction-placeholder">
-              <span className="reaction-placeholder-dot" />
-              <span className="reaction-placeholder-dot" />
-              <span className="reaction-placeholder-dot" />
-              <span style={{ marginLeft: 6 }}>{t(UI.reactionPlaceholder, lang)}</span>
-            </div>
           )}
         </div>
       )}

@@ -22,15 +22,16 @@ export default function EmailCapture({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  // becomes true after first failed submit — enables real-time validation
+  const [validateOnInput, setValidateOnInput] = useState(false);
 
-  const nameError = submitted && !name.trim()
+  const nameError = validateOnInput && !name.trim()
     ? (lang === "uk"
         ? "Будь ласка, розкажи нам, як тебе звати"
         : "We'd love to know your name — mind sharing?")
     : null;
 
-  const emailError = submitted
+  const emailError = validateOnInput
     ? !email.trim()
       ? (lang === "uk"
           ? "Нам потрібна твоя адреса, щоб надіслати доступ"
@@ -43,14 +44,16 @@ export default function EmailCapture({
     : null;
 
   const isValid = name.trim().length > 0 && isValidEmail(email);
-  const buttonDisabled = (submitted && !isValid) || loading;
+  const buttonDisabled = loading;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (loading) return;
 
-    setSubmitted(true);
-    if (!isValid) return;
+    if (!isValid) {
+      setValidateOnInput(true);
+      return;
+    }
 
     track("email_submit");
     setLoading(true);
@@ -58,7 +61,7 @@ export default function EmailCapture({
       await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), answers, lang }),
+        body: JSON.stringify({ name: name.trim(), email: email.trim(), answers }),
       });
     } catch {
       // non-blocking — navigate to success regardless
