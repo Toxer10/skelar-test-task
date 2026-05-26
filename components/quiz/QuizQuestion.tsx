@@ -101,22 +101,31 @@ export default function QuizQuestion({
         ))}
       </div>
 
-      {/* Reaction popup — fixed-height reservation prevents button jump */}
-      <div style={{ minHeight: 72 }}>
-        {reaction && (
-          <div key={selected.join(",")} className="reaction-popup animate-fade-in-up">
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-              <div className="reaction-avatar">✨</div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <p className="reaction-message">{t(reaction.message, lang)}</p>
-                {reaction.stat && (
-                  <p className="reaction-stat">{t(reaction.stat, lang)}</p>
-                )}
+      {/* Reaction area — only reserved on questions that have aiReaction */}
+      {question.aiReaction && (
+        <div style={{ minHeight: 72 }}>
+          {reaction ? (
+            <div key={selected.join(",")} className="reaction-popup animate-fade-in-up">
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <div className="reaction-avatar">✨</div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <p className="reaction-message">{t(reaction.message, lang)}</p>
+                  {reaction.stat && (
+                    <p className="reaction-stat">{t(reaction.stat, lang)}</p>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="reaction-placeholder">
+              <span className="reaction-placeholder-dot" />
+              <span className="reaction-placeholder-dot" />
+              <span className="reaction-placeholder-dot" />
+              <span style={{ marginLeft: 6 }}>{t(UI.reactionPlaceholder, lang)}</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Action row */}
       <div style={{ display: "flex", gap: 10 }}>

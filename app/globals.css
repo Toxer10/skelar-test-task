@@ -668,6 +668,30 @@ body {
   margin-top: 3px;
 }
 
+.reaction-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed var(--border);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.reaction-placeholder-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-light);
+  animation: typingDot 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.reaction-placeholder-dot:nth-child(2) { animation-delay: 0.16s; }
+.reaction-placeholder-dot:nth-child(3) { animation-delay: 0.32s; }
+
 /* ─── Focus visible ──────────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--primary);

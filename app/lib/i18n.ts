@@ -12,6 +12,9 @@ export const UI = {
   themeLight: { uk: "☀️ Світла", en: "☀️ Light" },
   themeDark:  { uk: "🌙 Темна",  en: "🌙 Dark"  },
 
+  // Reaction placeholder
+  reactionPlaceholder: { uk: "AI прокоментує твій вибір", en: "AI will comment on your choice" },
+
   // Landing
   landingBadge: {
     uk: "🌍 AI-репетитор іноземних мов",
