@@ -380,11 +380,13 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.option-card:hover {
-  border-color: var(--lavender);
-  background: var(--lavender-soft);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+@media (hover: hover) {
+  .option-card:hover {
+    border-color: var(--lavender);
+    background: var(--lavender-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+  }
 }
 
 .option-card:active {
