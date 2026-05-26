@@ -2,7 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import { t, UI } from "@/app/lib/i18n";
-import { Lang, Reaction, QuizQuestion as QuizQuestionType } from "@/app/lib/types";
+import {
+  Lang,
+  Reaction,
+  QuizQuestion as QuizQuestionType,
+} from "@/app/lib/types";
 import OptionCard from "./OptionCard";
 
 interface QuizQuestionProps {
@@ -23,7 +27,12 @@ export default function QuizQuestion({
   const [confirming, setConfirming] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => () => { if (timerRef.current) clearTimeout(timerRef.current); }, []);
+  useEffect(
+    () => () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    },
+    [],
+  );
 
   const handleToggle = (value: string) => {
     if (question.type === "single") {
@@ -70,16 +79,29 @@ export default function QuizQuestion({
           {t(question.question, lang)}
         </h2>
         {question.subtitle && (
-          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.5 }}>
+          <p
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--text-muted)",
+              lineHeight: 1.5,
+            }}
+          >
             {t(question.subtitle, lang)}
           </p>
         )}
         {question.type === "multi" && (
-          <p style={{ fontSize: "0.78rem", color: "var(--text-light)", marginTop: 6 }}>
+          <p
+            style={{
+              fontSize: "0.78rem",
+              color: "var(--text-light)",
+              marginTop: 6,
+            }}
+          >
             {t(UI.selectMultiple, lang)}
             {selected.length > 0 && (
               <span style={{ color: "var(--primary)", fontWeight: 700 }}>
-                {" "}· {selected.length} {t(UI.selectedCount, lang)}
+                {" "}
+                · {selected.length} {t(UI.selectedCount, lang)}
               </span>
             )}
           </p>
@@ -87,7 +109,10 @@ export default function QuizQuestion({
       </div>
 
       {/* Options */}
-      <div className="stagger" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <div
+        className="stagger"
+        style={{ display: "flex", flexDirection: "column", gap: 8 }}
+      >
         {question.options.map((opt) => (
           <div key={opt.id} className="animate-fade-in-up">
             <OptionCard
@@ -105,17 +130,26 @@ export default function QuizQuestion({
       {question.aiReaction && (
         <div style={{ minHeight: 72 }}>
           {reaction ? (
-            <div key={selected.join(",")} className="reaction-popup animate-fade-in-up">
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+            <div
+              key={selected.join(",")}
+              className="reaction-popup animate-fade-in-up"
+            >
+              <div
+                style={{ display: "flex", alignItems: "flex-start", gap: 10 }}
+              >
                 <div className="reaction-avatar">✨</div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <p className="reaction-message">{t(reaction.message, lang)}</p>
+                  <p className="reaction-message">
+                    {t(reaction.message, lang)}
+                  </p>
                   {reaction.stat && (
                     <p className="reaction-stat">{t(reaction.stat, lang)}</p>
                   )}
                 </div>
               </div>
             </div>
+          ) : (
+            <></>
           )}
         </div>
       )}
