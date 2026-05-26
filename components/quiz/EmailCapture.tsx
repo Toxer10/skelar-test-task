@@ -55,7 +55,7 @@ export default function EmailCapture({
     track("email_submit");
     setLoading(true);
     try {
-      await fetch("/api/telegram", {
+      await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), email: email.trim(), answers, lang }),
