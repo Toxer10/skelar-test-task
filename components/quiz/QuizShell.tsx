@@ -201,17 +201,8 @@ export default function QuizShell({ initialLang, initialDark }: QuizShellProps) 
       </div>
 
       {/* Main content */}
-      <main
-        style={{
-          flex: 1,
-          width: "100%",
-          maxWidth: 560,
-          padding: "140px 16px 40px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <div className="card" style={{ padding: "28px 24px" }}>
+      <main className="quiz-main">
+        <div className="card quiz-card-body">
           {step.kind === "question" && currentQ && (
             <QuizQuestion
               key={currentQ.id}
