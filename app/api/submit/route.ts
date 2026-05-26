@@ -28,7 +28,7 @@ async function sendTelegram(text: string): Promise<void> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, answers, lang } = await request.json();
+    const { name, email, answers } = await request.json();
 
     const typedAnswers = (answers ?? {}) as QuizAnswers;
 
@@ -48,7 +48,6 @@ export async function POST(request: NextRequest) {
       ``,
       `👤 <b>Ім'я:</b> ${name ?? "—"}`,
       `📧 <b>Email:</b> ${email ?? "—"}`,
-      `🌐 <b>Мова:</b> ${lang === "uk" ? "Українська" : "English"}`,
       ``,
       `📋 <b>Відповіді:</b>`,
       answersText,

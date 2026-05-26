@@ -101,18 +101,25 @@ export default function QuizQuestion({
         ))}
       </div>
 
-      {/* Reaction popup */}
-      {reaction && (
-        <div key={selected.join(",")} className="reaction-popup animate-fade-in-up">
-          <p className="reaction-message">{t(reaction.message, lang)}</p>
-          {reaction.stat && (
-            <p className="reaction-stat">{t(reaction.stat, lang)}</p>
-          )}
-        </div>
-      )}
+      {/* Reaction popup — fixed-height reservation prevents button jump */}
+      <div style={{ minHeight: 72 }}>
+        {reaction && (
+          <div key={selected.join(",")} className="reaction-popup animate-fade-in-up">
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+              <div className="reaction-avatar">✨</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p className="reaction-message">{t(reaction.message, lang)}</p>
+                {reaction.stat && (
+                  <p className="reaction-stat">{t(reaction.stat, lang)}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Action row */}
-      <div style={{ display: "flex", gap: 10, marginTop: 4 }}>
+      <div style={{ display: "flex", gap: 10 }}>
         <button
           onClick={handleContinue}
           disabled={selected.length === 0 || confirming}
