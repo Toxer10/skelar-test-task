@@ -187,9 +187,14 @@ export default function QuizShell({ initialLang, initialDark }: QuizShellProps) 
               onClick={toggleTheme}
               className="btn-ghost"
               aria-label="Toggle theme"
-              style={{ fontSize: "1rem", padding: "6px 10px" }}
+              style={{
+                fontSize: "0.82rem",
+                fontWeight: 700,
+                padding: "6px 10px",
+                border: "1.5px solid var(--border)",
+              }}
             >
-              {dark ? "☀️" : "🌙"}
+              {t(dark ? UI.themeLight : UI.themeDark, lang)}
             </button>
           </div>
 

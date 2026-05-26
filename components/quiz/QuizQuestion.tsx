@@ -95,6 +95,7 @@ export default function QuizQuestion({
               label={t(opt.label, lang)}
               selected={selected.includes(opt.value)}
               onClick={() => handleToggle(opt.value)}
+              variant={question.type === "single" ? "radio" : "checkbox"}
             />
           </div>
         ))}

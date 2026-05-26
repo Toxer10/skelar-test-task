@@ -167,12 +167,12 @@ export const QUESTIONS: QuizEntry[] = [
     id: 1,
     type: "single",
     question: {
-      uk: "Яку мову ти мрієш розблокувати?",
-      en: "Which language do you want to unlock?",
+      uk: "Яку мову ти мрієш освоїти?",
+      en: "Which language do you want to learn?",
     },
     subtitle: {
-      uk: "Вибери мову — і ми підберемо ідеальний трек",
-      en: "Pick a language — we'll build the perfect track",
+      uk: "Вибери мову — і ми підберемо ідеальний темп навчання",
+      en: "Pick a language — we'll build the perfect learning pace for you",
     },
     options: [
       { id: "en", emoji: "🇬🇧", label: { uk: "Англійська", en: "English" }, value: "english" },
@@ -189,10 +189,6 @@ export const QUESTIONS: QuizEntry[] = [
     question: {
       uk: "Яка твоя головна ціль?",
       en: "What's your main goal?",
-    },
-    subtitle: {
-      uk: "Навіщо тобі ця мова?",
-      en: "Why do you need this language?",
     },
     options: [
       { id: "it",     emoji: "💻", label: { uk: "Отримати офер в IT",              en: "Land a job in IT"              }, value: "it_job"       },

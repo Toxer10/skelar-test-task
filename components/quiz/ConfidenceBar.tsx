@@ -14,7 +14,7 @@ export default function StepCounter({ current, total }: StepCounterProps) {
             key={i}
             style={{
               flex: 1,
-              height: 3,
+              height: 6,
               borderRadius: 99,
               background: i < current ? "var(--primary)" : "var(--border)",
               transition: "background 0.4s cubic-bezier(0.16, 1, 0.3, 1)",

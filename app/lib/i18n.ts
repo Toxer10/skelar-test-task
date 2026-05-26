@@ -8,22 +8,26 @@ export const UI = {
   back: { uk: "Назад", en: "Back" },
   next: { uk: "Далі", en: "Next" },
 
+  // Theme toggle
+  themeLight: { uk: "☀️ Світла", en: "☀️ Light" },
+  themeDark:  { uk: "🌙 Темна",  en: "🌙 Dark"  },
+
   // Landing
   landingBadge: {
-    uk: "✨ AI-репетитор нового покоління",
-    en: "✨ Next-gen AI Language Tutor",
+    uk: "🌍 AI-репетитор іноземних мов",
+    en: "🌍 AI Language Tutor",
   },
   landingTitle: {
-    uk: "Говори без страху.\nВже сьогодні.",
-    en: "Speak without fear.\nStarting today.",
+    uk: "Вивчай мову.\nГовори без страху.",
+    en: "Learn a language.\nSpeak without fear.",
   },
   landingSubtitle: {
-    uk: "Приватний AI-наставник, який ніколи не засуджує за помилки. Персональний план за 2 хвилини.",
-    en: "A private AI tutor who never judges your mistakes. Your personal plan in 2 minutes.",
+    uk: "Персональний репетитор з англійської та інших мов — без засудження, без нудьги. Отримай свій план за 2 хвилини.",
+    en: "Your personal tutor for English and other languages — no judgment, no boredom. Get your plan in 2 minutes.",
   },
   landingCta: {
-    uk: "Підібрати план — це безкоштовно 🚀",
-    en: "Get your plan — it's free 🚀",
+    uk: "Підібрати план — це безкоштовно →",
+    en: "Get your plan — it's free →",
   },
   landingNote: {
     uk: "10 000+ людей вже навчаються",

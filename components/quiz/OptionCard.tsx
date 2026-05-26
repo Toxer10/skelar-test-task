@@ -6,6 +6,7 @@ interface OptionCardProps {
   selected: boolean;
   onClick: () => void;
   disabled?: boolean;
+  variant?: "radio" | "checkbox";
 }
 
 export default function OptionCard({
@@ -14,6 +15,7 @@ export default function OptionCard({
   selected,
   onClick,
   disabled,
+  variant = "checkbox",
 }: OptionCardProps) {
   return (
     <button
@@ -23,6 +25,12 @@ export default function OptionCard({
       style={{ width: "100%", textAlign: "left", cursor: disabled ? "default" : "pointer" }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        {variant === "radio" && (
+          <div
+            className={`option-radio${selected ? " option-radio--selected" : ""}`}
+            style={{ flexShrink: 0 }}
+          />
+        )}
         <span style={{ fontSize: "1.35rem", lineHeight: 1, flexShrink: 0 }}>
           {emoji}
         </span>
@@ -38,7 +46,7 @@ export default function OptionCard({
         >
           {label}
         </span>
-        {selected && (
+        {variant === "checkbox" && selected && (
           <div
             className="option-check"
             style={{

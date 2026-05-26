@@ -5,18 +5,18 @@
 /* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg: #f7f5ff;
+  --bg: #f8fafc;
   --bg-card: #ffffff;
-  --bg-subtle: #eef2ff;
+  --bg-subtle: #eff6ff;
 
   /* Text */
-  --text: #1e1b4b;
-  --text-muted: #6b7280;
+  --text: #111827;
+  --text-muted: #4b5563;
   --text-light: #9ca3af;
 
-  /* Pastel accents */
-  --lavender: #c4b5fd;
-  --lavender-soft: #ede9fe;
+  /* Accents */
+  --lavender: #93c5fd;
+  --lavender-soft: #eff6ff;
   --mint: #6ee7b7;
   --mint-soft: #d1fae5;
   --peach: #fca5a5;
@@ -27,14 +27,14 @@
   --sunshine-soft: #fef9c3;
 
   /* Primary */
-  --primary: #7c3aed;
-  --primary-hover: #6d28d9;
-  --primary-light: #ede9fe;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
 
   /* UI */
   --border: #e5e7eb;
-  --border-focus: #c4b5fd;
-  --shadow: 0 4px 24px rgba(124, 58, 237, 0.08);
+  --border-focus: #93c5fd;
+  --shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
   --radius: 20px;
   --radius-sm: 12px;
@@ -47,16 +47,16 @@
 
 /* ─── Dark Mode ──────────────────────────────────────────────────────────────── */
 .dark {
-  --bg: #0f0d1a;
-  --bg-card: #1a1728;
-  --bg-subtle: #231f35;
+  --bg: #0f172a;
+  --bg-card: #1e293b;
+  --bg-subtle: #1e293b;
 
-  --text: #f5f3ff;
-  --text-muted: #a78bfa;
-  --text-light: #6d6a7c;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
 
-  --lavender: #a78bfa;
-  --lavender-soft: #2e1f5e;
+  --lavender: #60a5fa;
+  --lavender-soft: #1e3a5f;
   --mint: #34d399;
   --mint-soft: #064e3b;
   --peach: #f87171;
@@ -66,12 +66,12 @@
   --sunshine: #fcd34d;
   --sunshine-soft: #451a03;
 
-  --primary: #a78bfa;
-  --primary-hover: #c4b5fd;
-  --primary-light: #2e1f5e;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-light: #1e3a5f;
 
-  --border: #2d2a40;
-  --border-focus: #7c3aed;
+  --border: #2d3748;
+  --border-focus: #3b82f6;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
@@ -126,7 +126,7 @@ body {
 .bg-blob-1 {
   width: 500px;
   height: 500px;
-  background: var(--lavender);
+  background: var(--sky);
   top: -120px;
   left: -100px;
   animation-delay: 0s;
@@ -384,7 +384,7 @@ body {
   border-color: var(--lavender);
   background: var(--lavender-soft);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.12);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
 }
 
 .option-card:active {
@@ -394,11 +394,45 @@ body {
 .option-card.selected {
   border-color: var(--primary);
   background: var(--primary-light);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .option-card.selected .option-check {
   animation: checkPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ─── Radio indicator (single-choice questions) ──────────────────────────── */
+.option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  transition: border-color 0.18s, background 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.option-radio::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.18s, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0);
+}
+
+.option-radio--selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.option-radio--selected::after {
+  background: var(--primary);
+  transform: scale(1);
 }
 
 /* ─── Button ─────────────────────────────────────────────────────────────────── */
@@ -423,7 +457,7 @@ body {
 .btn-primary:hover:not(:disabled) {
   background: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
 }
 
 .btn-primary:active:not(:disabled) {
